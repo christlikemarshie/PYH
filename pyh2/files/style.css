@@ -192,7 +192,86 @@ a {
   line-height: 1.02;
   letter-spacing: -.025em;
   max-width: 11ch;   /* "ch" = width of a letter, so text wraps after about 11 letters */
-  text-shadow: 0 2px 24px rgba(0,0,0,.45);
+  /* A drop-shadow does the same job as the old text-shadow, but it also works
+     with the shimmer below (a normal text-shadow would show through the letters). */
+  filter: drop-shadow(0 2px 24px rgba(0,0,0,.45));
+  /* Gentle floating (see the FLOAT section below). "will-change" tells the
+     browser this will move, so it can keep the motion silky smooth. */
+  will-change: transform, translate;
+  animation:
+    float 10s cubic-bezier(.37, 0, .63, 1) infinite,
+    drift 14s cubic-bezier(.37, 0, .63, 1) infinite;
+}
+
+/* SHIMMER: one big, soft wave that glides slowly across the whole headline,
+   over and over. The letters stay white, and a band of black at reduced
+   opacity (no colour at all) slowly passes through them.
+   How it works: the letters are filled with a wide gradient (white with a
+   see-through black band) instead of a plain colour, and the gradient slowly
+   slides sideways.
+   "@supports" makes sure old browsers that cannot do this keep plain white text. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero h1 {
+    background:
+      /* Top layer: a soft band of black at reduced opacity (0.5 = 50% black).
+         The many small steps (instead of one straight slope) make the band fade
+         in and out very gradually, like a cosine curve, so there are no hard edges.
+         It is clear at both ends, so the loop has no seam. */
+      linear-gradient(
+        100deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 22%,
+        rgba(0, 0, 0, .02) 25.5%,
+        rgba(0, 0, 0, .07) 29%,
+        rgba(0, 0, 0, .15) 32.5%,
+        rgba(0, 0, 0, .25) 36%,
+        rgba(0, 0, 0, .35) 39.5%,
+        rgba(0, 0, 0, .43) 43%,
+        rgba(0, 0, 0, .48) 46.5%,
+        rgba(0, 0, 0, .5) 50%,     /* the darkest part of the wave. Lower = fainter */
+        rgba(0, 0, 0, .48) 53.5%,
+        rgba(0, 0, 0, .43) 57%,
+        rgba(0, 0, 0, .35) 60.5%,
+        rgba(0, 0, 0, .25) 64%,
+        rgba(0, 0, 0, .15) 67.5%,
+        rgba(0, 0, 0, .07) 71%,
+        rgba(0, 0, 0, .02) 74.5%,
+        rgba(0, 0, 0, 0) 78%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      /* Bottom layer: the plain white of the letters */
+      #ffffff;
+    background-size: 200% 100%;      /* gradient is twice as wide as the headline */
+    -webkit-background-clip: text;   /* clips the gradient to the shape of the letters */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;   /* lets the gradient show through the letters */
+    animation:
+      shimmer 16s linear infinite,   /* 16s = one full wave. Bigger = slower. */
+      float 10s cubic-bezier(.37, 0, .63, 1) infinite,   /* keeps the floating going too */
+      drift 14s cubic-bezier(.37, 0, .63, 1) infinite;
+  }
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }   /* same picture as 0%, so the loop is seamless */
+  to   { background-position: 0% 0; }     /* slides the wave across to the right */
+}
+
+/* FLOAT: the headline rises a little and sinks back, very slowly, like it is
+   hovering on air. Two slow movements run at the same time, with different
+   lengths (10s up and down, 14s side to side), so the motion never repeats in
+   an obvious, mechanical way. That is what makes it feel soft and natural.
+   - "cubic-bezier(.37, 0, .63, 1)" is a sine-wave curve: it speeds up and slows
+     down gradually, with no sudden starts or stops.
+   - Only movement is animated (no shadow changes), which keeps it very smooth.
+   - 11px is how high it rises, 5px is how far it drifts sideways.
+   - Bigger seconds = slower. Smaller pixels = subtler. */
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -11px; }
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(5px); }
 }
 
 /* The "Know Jesus" glass button.
@@ -506,7 +585,7 @@ footer nav {
   .orbit { display: none; }       /* hide the orbit, there is not enough room */
   .links { display: none; }       /* hide the menu links */
   .nav { padding: 12px 18px; }
-  .about, .cards { grid-template-columns: 1fr; }   /* stack columns into one */  
+  .about, .cards { grid-template-columns: 1fr; }   /* stack columns into one */
   .about img { max-width: 380px; margin: 0 auto; }
   section { padding: 72px 0; }
   .hero h1 { max-width: 12ch; }
@@ -514,9 +593,11 @@ footer nav {
 }
 
 /* For people who set their device to reduce motion:
-   turn off smooth scrolling, hover animations and the button flick. */
+   turn off smooth scrolling, hover animations, the button flick
+   the headline shimmer and the headline floating. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
   .glass-btn { animation: none; }
+  .hero h1 { animation: none; }   /* no headline shimmer or floating */
 }
