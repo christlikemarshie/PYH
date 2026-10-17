@@ -1,0 +1,26 @@
+html tags used:
+
+   <h2>
+   <strong>
+   <footer>
+   <article>
+   <br>
+   <button>
+   <span>
+   <ul>
+   <li>
+   <p>
+
+css properties:
+
+ font-weight
+ color
+ background-image
+ text-align
+ display
+
+how i used bootstrap and javscript:
+
+   i chose to use bootstrap for the hamburger menu whenever the screen is getting minimised for easy access of the nav-bar
+   and some javascript for the popup when one hits a certain button which leads to another tab so the pop up is for confirmation.
+

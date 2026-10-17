@@ -1,0 +1,26 @@
+body
+{
+box-sizing: border-box;
+position: absolute;
+width: 1554px;
+height: 1036px;
+left: -9px;
+top: 0px;
+background: url(mypic.jpg);
+border: 1px solid #000000;
+}
+
+.navie
+{
+/* Rectangle 6 */
+
+position: absolute;
+width: 1446px;
+height: 115px;
+left: -6px;
+bottom: 4209px;
+
+background-color: rgba(0, 0, 0, 0.48);
+backdrop-filter: blur(15.05px);
+/* Note: backdrop-filter has minimal browser support */
+}

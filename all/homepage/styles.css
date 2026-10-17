@@ -1,0 +1,303 @@
+.body1
+{
+  min-height: 100vh;
+  margin: 0;
+}
+
+#mynav-bar
+{
+  background: rgba(0, 0, 0, 0.60) !important;
+  backdrop-filter: blur(15px);
+}
+.navbar
+{
+  min-height: 115px;
+  padding: 0 4%;
+}
+#mynav-bar .container-fluid {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar a
+{
+text-align:center;
+font-family: 'Marcellus',sans-serif;
+font-style: small;
+font-weight: 100;
+font-size: 17.5882px;
+line-height: 20px;
+text-decoration:none;
+color: white;
+
+
+
+}
+.nav-butt
+{
+    /* Component 3 */
+
+margin-left: auto;
+position: static;
+width: 110px;
+height: 36px;
+left: 1302px;
+border:none;
+font-weight:bold;
+background:#ffffff !important;
+flex-shrink:0;
+}
+
+.logo
+{
+    width:50px;
+    margin:0px
+
+}
+.nav-center
+{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+}
+a:hover
+{
+    color:black !important;
+}
+.bigword
+{
+    /* Type@61 */
+
+position: absolute;
+width: 596px;
+height: 140px;
+left: 30px;
+top: 200px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 58.7206px;
+line-height: 120%;
+/* or 70px */
+color: #000000;
+}
+.bigword2
+{
+  /* Type@61 */
+
+position: absolute;
+width: 397px;
+height: 140px;
+left: 60px;
+top: 270px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 58.7206px;
+line-height: 120%;
+/* or 70px */
+
+color: #ffffff;
+
+
+}
+
+
+/* CSS FOR SERMON html*/
+.bodie
+{
+    /* Blog */
+position: relative;
+width: 1440px;
+height: 1138.5px;
+background-color:rgba(0, 0, 0, 0.5);
+
+}
+
+.goodlooking
+{
+    /* div.framer-15gogw0 */
+
+position: absolute;
+width: 1104px;
+height: 638.5px;
+left: calc(50% - 1104px/2);
+top: calc(50% - 638.5px/2 - 250px);
+}
+
+.innerdiv
+{
+    /* div.framer-i0w9zk */
+position: absolute;
+width: 1056px;
+height: 638.5px;
+left: calc(50% - 1056px/2);
+top: calc(50% - 638.5px/2);
+}
+.para
+{
+    /* Heading 4 */
+
+position: absolute;
+height: 60px;
+left: 105px;
+right: 451px;
+top: 579px;
+}
+.minor
+{
+    /* div.framer-1inhxad */
+
+position: absolute;
+height: 340.5px;
+left: 0px;
+right: 0px;
+top: 128px;
+}
+
+.biggie
+{
+    /* Heading 1 */
+
+position: absolute;
+height: 210px;
+left: 0px;
+right: 0px;
+top: 46.5px;
+/* Ever thought about Jesus ? */
+
+position: absolute;
+width: 604.81px;
+height: 220px;
+left: 0px;
+top: -4.5px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 91.9922px;
+line-height: 105px;
+/* or 114% */
+display: flex;
+align-items: center;
+letter-spacing: -3.6px;
+
+color: #000000;
+}
+
+
+.radial
+{
+    /* div.framer-xk4056 */
+
+position: absolute;
+width: 600px;
+right: 308px;
+top: 0px;
+bottom: 0px;
+
+background: radial-gradient(50% 50% at 50% 50%, #0E0F11 0%, rgba(14, 15, 17, 0) 100%);
+border-radius: 1000px;
+}
+.yellow
+{
+    /* div.framer-1viwxbk */
+
+position: absolute;
+left: 361px;
+right: 58px;
+top: -100px;
+bottom: -100px;
+
+opacity: 0.08;
+filter: blur(50px);
+border-radius: 1000px;
+
+}
+.navbar-nav
+{
+  display: flex;
+  justify-content: center;   /* center links horizontally */
+  align-items: center;       /* vertical alignment */
+  gap: 60px;                 /* even spacing between links */
+  width: 100%;
+                 /* remove forced margin */
+}
+ /* Desktop navigation */
+@media (min-width: 992px) {
+  #navbarNav {
+    flex: 1;              /* take remaining room between logo and JOIN */
+  }
+
+  #navbarNav .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; /* equal distribution */
+    align-items: center;
+    gap: 0;               /* remove your fixed 60px gap */
+  }
+}
+
+/* Mobile navigation */
+@media (max-width: 991px) {
+  #navbarNav .navbar-nav {
+    padding: 1rem 0;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+.navbar-nav .nav-link {
+  font-size: 18px;
+  color: white;
+  font-family: 'Marcellus', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: black;
+}
+/* Your image layer */
+.page-background
+{
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("mypic.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Blur image only when the selected word is hovered */
+body:has(.blur-trigger:hover, .trigger2:hover) .page-background {
+  filter: blur(10px);
+  transform: scale(1.05); /* prevents blurred edges */
+}
+
+.blur-trigger {
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.blur-trigger:hover {
+  color: black;
+}
+
+.trigger2 {
+  color: #FFE8A3;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+
+}
+
+.trigger2:hover {
+  color: white;
+}

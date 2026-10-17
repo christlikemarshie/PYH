@@ -1,0 +1,124 @@
+.logo {
+margin-left:auto;
+margin-right:auto;
+max-width:100px ;
+margin-top: 2%;
+
+}
+* {
+margin:0;
+padding:0;
+}
+.fieldset{
+margin-top: 200px;
+margin-bottom:200px;
+margin-left: 200px;
+margin-right:200px;
+text-align: center;
+border: solid 3px;
+border-color: white;
+border-radius: 40px;
+ 
+}
+input::placeholder{
+  color:white;  
+    
+}
+#subheading1 {
+font-family: sans-serif,Semi-bold;
+padding-top: 1%;
+font-size: large;
+font-weight: bold;
+}
+#subheading2 {
+margin-top: 3px;
+color:white;
+font-size: small;
+font-style: italic;
+padding-top: 1%;
+padding-bottom: 1%;
+
+}
+hr {
+    width:26%;
+    text-align: center;
+    margin:auto;
+    min-width:26%;
+}
+.input {
+ margin:17px;  
+ border-color:silver ; 
+ outline:none;
+ border:1px,solid; 
+ border-radius:14px ;
+ border-width:1px;  
+ padding: 1%; 
+ display:inline-block;
+ width:150px;
+ cursor: pointer;
+     background:linear-gradient(50deg, rgba(0, 0, 0,0.5),white);
+     vertical-align: middle;
+     min-width:150 ;
+}
+.btn{
+    padding:7px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background:radial-gradient(to-right,red,blue);
+    color:black;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+    background:linear-gradient(50deg, rgba(0, 0, 0,0.5),white);
+      font-family:sans-serif;
+    font-weight: 600;
+
+}
+.birth{
+    margin-left: 24px;
+}
+body{
+ background-image:URL("stocksnap-books-2596809.jpg") !important;
+ background-size: cover;
+ background-repeat: no-repeat;
+ }
+ footer{
+   text-align: center; 
+   margin-bottom: -100px;
+   padding-bottom: 25px;
+   border:1px soild grey;
+   background-color: black;
+ }
+ button:hover{
+    color:white;
+    transform: scale(1.05) translateY(-5px);
+    transition:all 0.4s ease-in-out;
+ }
+ button:focus{
+    outline: white solid 4px;
+    color:black;
+    background-color: #000000CC;
+    transition:all 0.9s ease-in-out;
+    border-color: white;
+ }
+ .fieldset:hover{
+    background-color:#00000080;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    color:white;
+    transform: scale(1.05) translateY(-5px);
+    transition:all 0.4s ease-in-out; 
+}
+
+input:focus{
+    border:2px solid white ;
+    transition:all 0.4s;
+    background-color:#000000CC ;
+    color:white;
+    transform: scale(1.05) translateY(-5px);
+    transition:all 0.4s ease-in-out; 
+}
+label{
+    font-size:1.2em ;
+    font-weight: 200;
+}
+
