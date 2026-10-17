@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ==========================================================================
+     PYH - Phenomenal Youth Hub | pyh-landing.html
+     This file holds the STRUCTURE and TEXT of the page.
+       style.css  = how it looks
+       script.js  = what it does (animation and form message)
+     Keep all three files, and the "images" folder, together in one folder.
+     ========================================================================== -->
+
+<!-- Basic page settings: text encoding and mobile-friendly sizing -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The text shown on the browser tab -->
+<title>PYH | Phenomenal Youth Hub</title>
+<!-- Google Fonts: Figtree (body text) and Instrument Serif (headings). Needs internet. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<!-- Our own files: the design (CSS) and the behaviour (JavaScript).
+     "defer" makes the script wait until the page has finished loading. -->
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- ===== NAVBAR: logo, menu links, Log in and Sign up =====
+     The links like href="#sermons" jump to the section with id="sermons". -->
+<header class="nav">
+  <a class="brand" href="#top" aria-label="PYH home">
+    <img src="images/logo.png" alt="PYH logo">
+    <span>PYH</span>
+  </a>
+  <!-- Menu links (hidden on small screens by the CSS) -->
+  <nav class="links" aria-label="Main">
+    <a href="#top">Home</a>
+    <a href="#sermons">Sermons</a>
+    <a href="#blog">Blog</a>
+    <a href="#about">About us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <!-- Log in and Sign up (both jump to the Join section at the bottom) -->
+  <div class="actions">
+    <a href="#join">Log in</a>
+    <a class="pill" href="#join">Sign up</a>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT STARTS HERE ===== -->
+<main id="top">
+  <!-- ===== HERO: big photo, headline and the orbiting circles ===== -->
+  <div class="hero">
+    <!-- Background photo (shown in black and white by the CSS). Replace images/hero.jpg to change it. -->
+    <img class="bg" src="images/hero.jpg" alt="Young people praying together at the Youth Connect Conference">
+
+    <!-- Headline and "Know Jesus" button -->
+    <div class="wrap">
+      <h1>“Doubt Your Doubts Before Faith”</h1>
+      <a class="glass-btn" href="#about">Know Jesus</a>
+    </div>
+
+    <!-- ORBIT: the dashed arc with three picture circles.
+         script.js moves the circles along the arc. aria-hidden hides this
+         decoration from screen readers. -->
+    <div class="orbit" aria-hidden="true">
+      <!-- The dashed half-ring line (an SVG path drawn from the top to the bottom, curving left) -->
+      <svg class="ring" viewBox="0 0 100 100" fill="none">
+        <path d="M50 12 A38 38 0 0 0 50 88" stroke="#fff" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"/>
+      </svg>
+
+      <!-- PICTURE CIRCLE 1: add your photo at images/circle-1.jpg (or change the file name in src).
+           If the file is missing, onerror shows the "+" placeholder instead of a broken image. -->
+      <div class="badge">
+        <div class="slot"><img src="images/circle-1.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
+      </div>
+
+      <!-- PICTURE CIRCLE 2: add your photo at images/circle-2.jpg (or change the file name in src).
+           If the file is missing, onerror shows the "+" placeholder instead of a broken image. -->
+      <div class="badge">
+        <div class="slot"><img src="images/circle-2.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
+      </div>
+
+      <!-- PICTURE CIRCLE 3: add your photo at images/circle-3.jpg (or change the file name in src).
+           If the file is missing, onerror shows the "+" placeholder instead of a broken image. -->
+      <div class="badge">
+        <div class="slot"><img src="images/circle-3.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
+      </div>
+    </div>
+
+    <!-- Small text at the bottom of the hero -->
+    <div class="name-tag">PHENOMENAL YOUTH HUB</div>
+  </div>
+
+  <!-- ===== ABOUT: photo and short introduction ===== -->
+  <section id="about">
+    <div class="wrap about">
+      <img src="images/about.jpg" alt="A young man worshipping during the Youth Connect Conference">
+      <div>
+        <h2>Real questions. Honest answers.</h2>
+        <p class="lead">PYH, the Phenomenal Youth Hub, is a community for young people who want to know Jesus for themselves. Bring your doubts. We would rather you ask them out loud than carry them alone.</p>
+        <p class="lead">We meet to worship, read Scripture and talk about faith in a way that makes sense for life today.</p>
+        <a class="glass-btn" href="#join" style="margin-top:14px">Join the hub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONFERENCE: Youth Connect Conference 2026 (also the target of the "Blog" link) ===== -->
+  <section class="conf" id="blog">
+    <div class="wrap">
+      <h2>Youth Connect Conference 2026</h2>
+      <p class="theme">Satisfy us early</p>
+      <p class="lead">A gathering for young people to worship, pray and connect. Date and venue to be announced.</p>
+      <blockquote>O satisfy us early with thy mercy; that we may rejoice and be glad all our days.<cite>Psalm 90:14</cite></blockquote>
+    </div>
+  </section>
+
+  <!-- ===== SERMONS: three cards. Change the titles and text, and remove "Coming soon" when ready. ===== -->
+  <section id="sermons">
+    <div class="wrap">
+      <h2>Sermons</h2>
+      <p class="lead">Messages for young people who are asking big questions.</p>
+      <div class="cards">
+        <article class="card"><h3>Doubt your doubts</h3><p>Why honest questions can lead you closer to faith.</p><span class="tag">Coming soon</span></article>
+        <article class="card"><h3>Who is Jesus?</h3><p>A simple look at who He is and why it matters to you.</p><span class="tag">Coming soon</span></article>
+        <article class="card"><h3>Praying when unsure</h3><p>How to talk to God when you do not have the right words.</p><span class="tag">Coming soon</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JOIN: email sign-up. script.js shows the thank-you message in <p id="msg">. ===== -->
+  <section class="join" id="join">
+    <div class="wrap">
+      <h2>Be part of PYH</h2>
+      <p class="lead" style="margin-inline:auto">Leave your email and we will send you news about meetings and the conference.</p>
+      <form id="form">
+        <input type="email" name="email" placeholder="Your email" aria-label="Email" required>
+        <button type="submit">Sign up</button>
+      </form>
+      <p id="msg" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER: copyright, quick links and contact email (also the target of the "Contact" link) ===== -->
+<footer id="contact">
+  <div class="wrap">
+    <span>&copy; 2026 Phenomenal Youth Hub</span>
+    <nav aria-label="Footer"><a href="#top">Home</a><a href="#sermons">Sermons</a><a href="#about">About us</a></nav>
+    <a href="mailto:hello@pyh.example">hello@pyh.example</a>
+  </div>
+</footer>
+
+</body>
+</html>
