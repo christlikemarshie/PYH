@@ -166,6 +166,20 @@ a {
   object-fit: cover;        /* fills the area and crops the edges, no stretching */
   object-position: center 35%;  /* which part of the photo stays visible */
   filter: grayscale(1) contrast(1.05);  /* black and white, a bit more contrast */
+  /* Slow, smooth blur in and out. 1.2s = how long it takes.
+     The cubic-bezier makes it start gently and ease out softly at the end. */
+  transition:
+    filter 1.2s cubic-bezier(.22, .61, .36, 1),
+    transform 1.2s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* When the mouse is over the "Know Jesus" button, blur the whole background
+   photo. ":has(...)" means "the hero that contains a hovered button".
+   The photo is scaled up a little so the blurred edges do not show dark gaps. */
+.hero:has(.glass-btn:hover) > img.bg,
+.hero:has(.glass-btn:focus-visible) > img.bg {
+  filter: grayscale(1) contrast(1.05) blur(14px);
+  transform: scale(1.08);
 }
 
 /* A dark layer on top of the photo so the white text is easy to read.
@@ -189,32 +203,57 @@ a {
 }
 
 /* Big headline. clamp(min, preferred, max) makes the size grow with the screen
-   width but never go below 2.8rem or above 6rem. */
+   width but never go below 3.2rem or above 7rem. */
 .hero h1 {
   font-weight: 800;
-  font-size: clamp(2.8rem, 7.2vw, 6rem);
+  font-size: clamp(3.2rem, 8.2vw, 7rem);
   line-height: 1.02;
   letter-spacing: -.025em;
   max-width: 11ch;   /* "ch" = width of a letter, so text wraps after about 11 letters */
   text-shadow: 0 2px 24px rgba(0,0,0,.45);
 }
 
-/* The "Know Jesus" glass button */
+/* The "Know Jesus" glass button.
+   - It is bigger than before (more padding and larger text).
+   - On hover the whole button fills with gold and the text turns dark.
+   - Every 4 seconds it does a quick "flick" (see @keyframes flick below)
+     to catch the eye and invite people to click. */
 .glass-btn {
   display: inline-block;
-  margin-top: 36px;
-  padding: 18px 44px;
-  border-radius: 22px;
+  margin-top: 40px;
+  padding: 24px 64px;
+  border-radius: 28px;
   background: rgba(20,20,22,.55);
   border: 1px solid rgba(255,255,255,.22);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  font-size: 1.25rem;
   font-weight: 600;
-  transition: background .2s, transform .2s;
+  /* Slow, smooth fade of the gold fill, the text colour and the lift */
+  transition:
+    background .8s ease,
+    color .8s ease,
+    border-color .8s ease,
+    transform .8s ease;
+  animation: flick 4s ease-in-out infinite;   /* repeats forever, once every 4 seconds */
 }
-.glass-btn:hover {
-  background: rgba(255,255,255,.2);
-  transform: translateY(-2px);   /* moves up 2px on hover */
+.glass-btn:hover,
+.glass-btn:focus-visible {
+  background: var(--gold);     /* the whole button fills with gold */
+  color: #111;                 /* dark text so it stays easy to read */
+  border-color: var(--gold);
+  transform: translateY(-3px); /* moves up 3px on hover */
+  animation: none;             /* stop flicking while the person is on it */
+}
+
+/* The flick. The button sits still for most of the 4 seconds, then does a
+   quick wiggle and a tiny pop in size near the end, then settles again. */
+@keyframes flick {
+  0%, 80%, 100% { transform: translateX(0) rotate(0) scale(1); }
+  84% { transform: translateX(-7px) rotate(-2deg) scale(1.06); }
+  88% { transform: translateX(7px) rotate(2deg) scale(1.06); }
+  92% { transform: translateX(-4px) rotate(-1deg) scale(1.03); }
+  96% { transform: translateX(3px) rotate(1deg) scale(1.01); }
 }
 
 /* "PHENOMENAL YOUTH HUB" text at the bottom of the hero */
@@ -489,11 +528,13 @@ footer nav {
   .about img { max-width: 380px; margin: 0 auto; }
   section { padding: 72px 0; }
   .hero h1 { max-width: 12ch; }
+  .glass-btn { padding: 20px 48px; font-size: 1.15rem; }   /* a little smaller on phones */
 }
 
 /* For people who set their device to reduce motion:
-   turn off smooth scrolling and hover animations. */
+   turn off smooth scrolling, hover animations and the button flick. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
+  .glass-btn { animation: none; }
 }
