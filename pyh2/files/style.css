@@ -74,7 +74,7 @@ a {
 }
 
 
-/* ---------- 3. NAVBAR (the glass bar at the top) ---------- */
+/* ---------- 3. NAVBAR (logo on the left, a small glass pill with the links) ---------- */
 .nav {
   position: absolute;   /* sits on top of the hero photo */
   top: 0;
@@ -87,10 +87,11 @@ a {
                                            links in the middle of the bar. */
   align-items: center;
   gap: 20px;
-  padding: 14px 40px 14px 28px;    /* top right bottom left */
-  background: rgba(20,20,22,.22);  /* very light dark tint, mostly see-through */
-  backdrop-filter: blur(20px);     /* blurs the photo behind = "glass" look */
-  -webkit-backdrop-filter: blur(20px);  /* same thing for Safari */
+  /* top right bottom left. The left value (56px, was 28px) moves the logo a
+     little to the right. The right value (68px) is bigger so the links stay in
+     exactly the same spot in the middle as before. */
+  padding: 14px 68px 14px 56px;
+  /* No background here any more: the glass now belongs to the links pill below. */
 }
 
 /* Logo and the "PYH" text stacked on top of each other */
@@ -113,19 +114,78 @@ a {
   margin-top: 4px;
 }
 
-/* The menu links (Home, Sermons, ...) */
+/* The menu links (Home, Sermons, ...) inside a small rounded glass pill.
+   GLASSMORPHISM: frosted glass that blends white and faded black.
+   It is built from these layers:
+   1. A soft gloss on the top half (light fading to nothing), like light on glass.
+   2. A smooth diagonal gradient: see-through white at the top left, fading
+      gently through a neutral middle into see-through black at the bottom right.
+      The extra steps make the blend very smooth, with no visible bands.
+   3. A blur of the photo behind it (the "frosted" part).
+   4. A thin light edge, bright and dark inner lines, and a soft shadow, so the
+      glass looks like it has thickness and floats above the photo.
+   This is a SOFT version of the effect (lower opacities and a lighter blur).
+   All the numbers like .18 are opacity: lower = more see-through. */
 .links {
   display: flex;
-  gap: 34px;
+  gap: 48px;              /* space between the links */
   font-size: .95rem;
   font-weight: 500;
+  padding: 12px 76px;     /* left and right space inside the pill (bigger = wider) */
+  border-radius: 999px;   /* very large radius = fully rounded ends */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.18) 0%,
+      rgba(255,255,255,.13) 15%,
+      rgba(255,255,255,.08) 30%,
+      rgba(128,128,128,.06) 50%,
+      rgba(0,0,0,.09) 70%,
+      rgba(0,0,0,.13) 85%,
+      rgba(0,0,0,.18) 100%
+    );
+  border: 1px solid rgba(255,255,255,.20);   /* thin light edge, like the edge of glass */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.26),     /* bright line along the top edge */
+    inset 0 -1px 0 rgba(0,0,0,.12),          /* dark line along the bottom edge */
+    0 8px 24px rgba(0,0,0,.15);              /* soft shadow so it floats */
+  backdrop-filter: blur(14px);               /* blurs the photo behind = frosted glass */
+  -webkit-backdrop-filter: blur(14px);       /* same thing for Safari */
 }
+/* Each link. When you hover over it (or Tab to it with the keyboard):
+   - a gold line grows smoothly outwards from the centre of the link
+   - the link brightens and lifts up by 1px
+   Everything takes half a second and eases in and out, so it feels soft. */
 .links a {
-  padding: 6px 0;
-  border-bottom: 2px solid transparent;  /* invisible line, so nothing jumps on hover */
+  position: relative;      /* lets the gold line be placed inside the link */
+  padding: 6px 0 8px;      /* the extra bottom space is where the gold line sits */
+  opacity: .85;            /* slightly softer when not hovered */
+  transition:
+    opacity .5s ease,
+    transform .5s cubic-bezier(.22, .61, .36, 1);
 }
-.links a:hover {
-  border-color: var(--gold);   /* gold underline appears on hover */
+.links a::after {          /* the gold line */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: scaleX(0);      /* squashed to nothing = invisible */
+  transform-origin: center;  /* grows from the middle outwards */
+  transition: transform .5s cubic-bezier(.22, .61, .36, 1);
+}
+.links a:hover,
+.links a:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.links a:hover::after,
+.links a:focus-visible::after {
+  transform: scaleX(1);      /* full width = the line has grown out */
 }
 
 
