@@ -11,12 +11,12 @@
   </head>
   <body>
 
-       <header class="nav">
-          <a class="brand" href="#top" aria-label="PYH home">
-            <img src="images/logo.png" alt="PYH logo">
-            <span>PYH</span>
-          </a>
- 
+    <header class="nav">  
+      <a class="brand" href="#top" aria-label="PYH home">
+        <img src="images/logo.png" alt="PYH logo">
+        <span>PYH</span>
+      </a>
+
       <nav class="links" aria-label="Main">
         <a href="#top">Home</a>
         <a href="#sermons">Sermons</a>
@@ -24,59 +24,52 @@
         <a href="#about">About us</a>
         <a href="#contact">Contact</a>
       </nav>
+    </header>
 
-  <!-- Log in and Sign up  -->
+    <!--  MAIN CONTENT STARTS HERE  -->
+    <main id="top">
+      <!-- HERO: big photo, headline and the orbiting circles -->
+      <div class="hero">
+        <!-- Background photo (shown in black and white by the CSS). Replace images/hero.jpg to change it. -->
+        <img class="bg" src="images/hero.jpg" alt="Young people praying together at the Youth Connect Conference">
 
-      <div class="actions">
-         <a href="#join">Log in</a>
-       <a class="pill" href="#join">Sign up</a>
-     </div>
-     </header>
-
-<!--  MAIN CONTENT STARTS HERE  -->
-<main id="top">
-  <!-- HERO: big photo, headline and the orbiting circles -->
-  <div class="hero">
-    <!-- Background photo (shown in black and white by the CSS). Replace images/hero.jpg to change it. -->
-    <img class="bg" src="images/hero.jpg" alt="Young people praying together at the Youth Connect Conference">
-
-    <!-- Headline and "Know Jesus" button -->
-    <div class="wrap">
-      <h1>“Doubt Your Doubts Before Faith”</h1>
-      <a class="glass-btn" href="#about">Know Jesus</a>
-    </div>
-
-    <!-- ORBIT: the dashed arc with three picture circles.
-         script.js moves the circles along the arc. aria-hidden hides this
-         decoration from screen readers. -->
-         
-    <div class="orbit" aria-hidden="true">
-      <!-- The dashed half-ring line (an SVG path drawn from the top to the bottom, curving left) -->
-      <svg class="ring" viewBox="0 0 100 100" fill="none">
-        <path d="M50 12 A38 38 0 0 0 50 88" stroke="#fff" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"/>
-      </svg>
-
-      <!-- images on the dashd circle -->
-      <div class="badge">
-        <div class="slot">
-           <img src="dove.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()">
+        <!-- Headline and "Know Jesus" button -->
+        <div class="wrap">
+          <h1>“Doubt Your Doubts Before Faith”</h1>
+          <a class="glass-btn" href="#about">Know Jesus</a>
         </div>
-      </div> 
-        <div class="badge">
-          <div class="slot">
-            <img src="cross.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()">
+
+        <!-- ORBIT: the dashed arc with three picture circles.
+             script.js moves the circles along the arc. aria-hidden hides this
+             decoration from screen readers. -->
+
+        <div class="orbit" aria-hidden="true">
+          <!-- The dashed half-ring line (an SVG path drawn from the top to the bottom, curving left) -->
+          <svg class="ring" viewBox="0 0 100 100" fill="none">
+            <path d="M50 12 A38 38 0 0 0 50 88" stroke="#fff" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"/>
+          </svg>
+
+          <!-- images on the dashd circle -->
+          <div class="badge">
+            <div class="slot">
+              <img src="dove.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()">
+            </div>
+          </div>
+          <div class="badge">
+            <div class="slot">
+              <img src="cross.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()">
+            </div>
+          </div>
+          <div class="badge">
+            <div class="slot"><img src="father.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
+          </div>
         </div>
-      </div>
-      <div class="badge">
-        <div class="slot"><img src="father.jpg" alt="" onerror="this.parentNode.classList.add('empty');this.remove()"></div>
-      </div>
-    </div>
 
-    <!-- Small text at the bottom of the hero -->
-    <div class="name-tag">PHENOMENAL YOUTH HUB</div>
-  </div>
-  <!-- Add your next section below the hero. -->
-</main>
+        <!-- Small text at the bottom of the hero -->
+        <div class="name-tag">PHENOMENAL YOUTH HUB</div>
+      </div>
+      <!-- Add your next section below the hero. -->
+    </main>
 
-</body>
+  </body>
 </html>

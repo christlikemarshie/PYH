@@ -506,7 +506,7 @@ footer nav {
   .orbit { display: none; }       /* hide the orbit, there is not enough room */
   .links { display: none; }       /* hide the menu links */
   .nav { padding: 12px 18px; }
-  .about, .cards { grid-template-columns: 1fr; }   /* stack columns into one */
+  .about, .cards { grid-template-columns: 1fr; }   /* stack columns into one */  
   .about img { max-width: 380px; margin: 0 auto; }
   section { padding: 72px 0; }
   .hero h1 { max-width: 12ch; }
